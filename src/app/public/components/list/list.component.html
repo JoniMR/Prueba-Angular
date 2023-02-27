@@ -1,0 +1,102 @@
+<div class="container container--task">
+  <form>
+    <mat-form-field>
+      <mat-label>Task name</mat-label>
+      <input
+        matInput
+        placeholder="Add here your new task"
+        value="Task 1"
+        id="taskName"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Task description</mat-label>
+      <input
+        matInput
+        placeholder="Add here your new task description"
+        value="Task 1 Description"
+        id="taskDescription"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="addTask()">
+    Add task
+  </button>
+</div>
+
+<div class="container container--main" cdkDropListGroup>
+  <div class="container container--lists">
+    <h2>To do</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="toDo"
+      class="list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="box" *ngFor="let item of toDo" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+
+  <div class="container container--lists">
+    <h2>In Progress</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="inProgress"
+      class="list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="box" *ngFor="let item of inProgress" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+  <div class="container container--lists">
+    <h2>To be tested</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="toBeTested"
+      class="list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="box" *ngFor="let item of toBeTested" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+
+  <div class="container container--lists">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="done"
+      class="list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="box" *ngFor="let item of done" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+
+  <div class="container container--lists-deleted">
+    <h2>Deleted</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="deleted"
+      class="list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="box">
+        <b> Move any task here to delete it. </b>
+      </div>
+    </div>
+  </div>
+</div>
